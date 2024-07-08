@@ -253,7 +253,7 @@ _PROJECTS = (
     Project(
         id='libwebp',
         display='libwebp',
-        licenses=[],
+        licenses=['COPYING'],
         update_url='https://storage.googleapis.com/downloads.webmproject.org/releases/webp/',
         update_regex=re.compile('libwebp-([0-9.]+)\\.tar'),
     ),
