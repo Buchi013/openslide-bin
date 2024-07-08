@@ -1,0 +1,24 @@
+--- b/meson.build	2024-04-12 11:26:32.781145766 +0200
++++ a/meson.build	2024-04-12 12:10:47.951178837 +0200
+@@ -114,9 +114,10 @@
+   add_project_arguments('-DWEBP_REDUCE_SIZE=1', language: 'c')
+ endif
+ 
+-# Threading.
+-threads_dep = dependency('threads', required: get_option('threads'))
+-cdata.set('WEBP_USE_THREAD', threads_dep.found() ? 1 : false)
++#testing
++threads_dep = dependency('', required: false)
++cdata.set('WEBP_USE_THREAD', false)
++
+ 
+ # Headers.
+ foreach _hdr : [
+@@ -253,7 +254,6 @@
+     sources: config_h,
+   ),
+   m_dep,
+-  threads_dep,
+ ]
+ 
+ # Libraries:

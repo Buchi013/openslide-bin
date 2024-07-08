@@ -54,7 +54,6 @@ else
     'libxml2',
     default_options : [
       'iconv=disabled',
-      'python=false',
     ],
   )
   subproject('sqlite3')
@@ -82,6 +81,9 @@ subproject(
     'tests=disabled',
   ],
 )
+
+subproject('libwebp')
+
 subproject('libtiff')
 subproject(
   'libopenjp2',
@@ -99,7 +101,6 @@ subproject(
 subproject(
   'glib',
   default_options : [
-    'introspection=disabled',
     'nls=disabled',
     'tests=false',
   ],
@@ -110,8 +111,6 @@ subproject(
     'png=disabled',
     'tiff=disabled',
     'jpeg=disabled',
-    'gif=disabled',
-    'others=enabled',
     'man=false',
     'builtin_loaders=bmp',
     'introspection=disabled',
@@ -147,5 +146,12 @@ openslide = subproject(
     # We don't run tests, but we still check that they build
     'default_library=shared',
     'doc=disabled',
+    '_filter_external_symbols=true',
+  ],
+)
+openslide_java = subproject(
+  'openslide-java',
+  default_options : [
+    'embed_jni_path=disabled',
   ],
 )

@@ -192,7 +192,6 @@ def _sqlite3_license(proj: Project) -> tuple[str, str]:
             ret.append(line)
     raise Exception("Couldn't parse license header")
 
-
 _PROJECTS = (
     Project(
         id='cairo',
@@ -250,6 +249,14 @@ _PROJECTS = (
         update_url='http://www.libpng.org/pub/png/libpng.html',
         update_regex=re.compile('libpng-([0-9.]+)-README.txt'),
     ),
+    #libwebp update based on instructions by Benjamin Gilbert https://github.com/openslide/openslide-bin/issues/243
+    Project(
+        id='libwebp',
+        display='libwebp',
+        licenses=[],
+        update_url='https://storage.googleapis.com/downloads.webmproject.org/releases/webp/',
+        update_regex=re.compile('libwebp-([0-9.]+)\\.tar'),
+    ),
     Project(
         id='libtiff',
         display='libtiff',
@@ -271,6 +278,17 @@ _PROJECTS = (
         licenses=['COPYING.LESSER'],
         update_url='https://github.com/openslide/openslide/tags',
         update_regex=re.compile('archive/refs/tags/v([0-9.]+)\\.tar'),
+    ),
+    Project(
+        id='openslide-java',
+        display='OpenSlide Java',
+        primary=True,
+        licenses=['COPYING.LESSER'],
+        update_url='https://github.com/openslide/openslide-java/tags',
+        # Exclude old v1.0.0 tag
+        update_regex=re.compile(
+            'archive/refs/tags/v1\\.0\\.0\\.tar.*|.*archive/refs/tags/v([0-9.]+)\\.tar'  # noqa: E501
+        ),
     ),
     Project(
         id='pcre2',
